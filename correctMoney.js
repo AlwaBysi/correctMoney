@@ -21,6 +21,7 @@ function correctmoney (e, params) {
         value = $(e.currentTarget).val();
     } else {
         value = e;
+
     }
 
     if (params.negative) {
