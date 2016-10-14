@@ -2,7 +2,8 @@ function correctmoney (e, params) {
     let value,
         position,
         resultForCurrency,
-        resultForSave;
+        resultForSave,
+        valueForInput;
 
     params = $.extend({
         forDisplay: true, // для отображения в дивах
@@ -29,17 +30,17 @@ function correctmoney (e, params) {
             result = value.split("-").length - 1;
 
             if (result > 1) {
-                value = value.replace( /^([^\-]*\-)|\-/g, '$1' );
+                valueForInput = value.replace( /^([^\-]*\-)|\-/g, '$1' );
             }
         }
     }
 
-    value = value.replace(/[^0-9.-]/, function (x) {
+    valueForInput = value.replace(/[^0-9.,-]/, function (x) {
         --position;
         return '';
     });
 
-
+    value = valueForInput;
 
     if (params.forDisplay) {
 
@@ -73,8 +74,9 @@ function correctmoney (e, params) {
     }
 
     if (!params.forSave) {
+        $(e.currentTarget).val(valueForInput);
         setCaretPosition(e.currentTarget, position);
-        $(e.currentTarget).val(value);
+
     }
     //$(e.currentTarget).val(value);
     //$('#resOne').text(value);
@@ -133,6 +135,8 @@ function hidePoint (value) {
             cent = value.split(',')[1];
             mainSum = value.split(',')[0];
             value = mainSum + cent;
+        } else {
+            return value;
         }
     }
 
@@ -144,10 +148,16 @@ function deleteAfterPoint (value, afterPoint) {
 
     if (value.split('.')[1] && value.split('.')[1].length) {
         cent = (value.split('.')[1]).substr(0, afterPoint);
-        value = cent.substr(cent, afterPoint);
+
+        if (cent.length > afterPoint) {
+            value = value.split(',')[1] + '.' + cent.substr(cent.length, afterPoint);
+        }
+
     } else if (value.split(',')[1] && value.split(',')[1].length) {
         cent = (value.split(',')[1]).substr(0, afterPoint);
-        value = cent.substr(cent, afterPoint);
+        if (cent.length > afterPoint) {
+            value = value.split(',')[1] + ',' + cent.substr(cent.length, afterPoint);
+        }
     }
 
     return value;
