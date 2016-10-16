@@ -7,9 +7,13 @@
     <script src="correctMoney.js"></script>
 </head>
 <body>
-    <input type="text" class="correctMoney" onkeyup="correctmoney(event, {forDisplay: true, classOfDomElement: 'resOne,resTwo', showPoint: false})">
+    <input type="text" id="correctMoney">
     <span class="resOne"></span>
     <span class="resTwo"></span>
     <span id="resTree"></span>
+
+    <script>
+        $('#correctMoney').on('keyup', e => correctmoney(event, {forDisplay: true, classOfDomElement: 'resOne,resTwo', showPoint: false}));
+    </script>
 </body>
 </html>
