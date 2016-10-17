@@ -124,43 +124,54 @@ function forDisplay($el, element, value) {
 }
 
 function hidePoint (value) {
-    let cent, mainSum;
+    let splitValue;
 
-    if (value.indexOf('.') != -1 || value.indexOf(',') != -1) {
-        if (value.indexOf('.') != -1 && !value.split('.')[1].length) {
-            cent = value.split('.')[1];
-            mainSum = value.split('.')[0];
-            value = mainSum + cent;
-        } else if (value.indexOf(',') != -1 && !value.split(',')[1].length) {
-            cent = value.split(',')[1];
-            mainSum = value.split(',')[0];
-            value = mainSum + cent;
-        } else {
-            return value;
-        }
+    if (value.indexOf('.') != -1){
+        splitValue = '.'
+    } else if (value.indexOf(',') != -1){
+        splitValue = ','
+    } else {
+        return value;
     }
 
-    return value;
+    return hidePointBodyFunction(value, splitValue);
+}
+
+function hidePointBodyFunction (value, splitValue){
+    let cent, mainSum, result;
+
+    if (value.indexOf(splitValue) != -1 && !value.split(splitValue)[1].length){
+        cent = value.split(splitValue)[1];
+        mainSum = value.split(splitValue)[0];
+        result = mainSum + cent;
+    } else {
+        result = value;
+    }
+
+    return result;
 }
 
 function deleteAfterPoint (value, afterPoint) {
-    let cent;
+    let splitValue;
 
-    if (value.split('.')[1] && value.split('.')[1].length) {
-        cent = (value.split('.')[1]).substr(0, afterPoint);
-
-        if (cent.length > afterPoint) {
-            value = value.split(',')[1] + '.' + cent.substr(cent.length, afterPoint);
-        }
-
-    } else if (value.split(',')[1] && value.split(',')[1].length) {
-        cent = (value.split(',')[1]).substr(0, afterPoint);
-        if (cent.length > afterPoint) {
-            value = value.split(',')[1] + ',' + cent.substr(cent.length, afterPoint);
-        }
+    if (value.indexOf('.') != -1){
+        splitValue = '.'
+    } else if (value.indexOf(',') != -1){
+        splitValue = ','
+    } else {
+        return value;
     }
 
-    return value;
+    return deleteAfterPointBodyFunction(value, afterPoint, splitValue);
+}
+
+function deleteAfterPointBodyFunction(value, afterPoint, splitValue){
+
+    if (value.split(splitValue)[1] && value.split(splitValue)[1].length) {
+        cent = (value.split(splitValue)[1]).substr(0, afterPoint);
+
+        return value.split(splitValue)[0] + splitValue + cent;
+    }
 }
 
 function doGetCaretPosition(ctrl) {
