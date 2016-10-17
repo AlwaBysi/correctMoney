@@ -13,7 +13,9 @@
     <span id="resTree"></span>
 
     <script>
-        $('#correctMoney').on('keyup', e => correctmoney(event, {forDisplay: true, classOfDomElement: 'resOne,resTwo', showPoint: false}));
+        $('#correctMoney').on('keyup', function(e){
+            correctmoney(e, {forDisplay: true, classOfDomElement: 'resOne,resTwo', showPoint: false})
+        });
     </script>
 </body>
 </html>
