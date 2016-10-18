@@ -30,7 +30,7 @@
 
 
  This data attr add new style in HEAD tag.
- By default in correctMoney.css this class is: 
+ By default in correctMoney.css this class is:  <br>
   
   .correctMoney {<br>
     border: none;<br>
