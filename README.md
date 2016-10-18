@@ -25,6 +25,10 @@
  <li>data-focus-color</li>
  </ul>
  Example: <br>
+ 
+ <code>
+ <input type="text" id="correctMoney" class="correctMoney" data-border-color="#000" data-input-width="250px" data-focus-color="red">
+ </code>
 
  This data attr add new style in HEAD tag.
  By default in correctMoney.css this class is: 
