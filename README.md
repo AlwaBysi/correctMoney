@@ -16,3 +16,32 @@
         afterPoint: 2, // the number of digits after the decimal point<br>
         showPoint: true, // show the entry point to cents<br>
         currency: 'руб.' // currency<br>
+        
+<p>
+ In input you can add next data attributes:
+ <ul>
+ <li>data-border-color</li>
+ <li>data-input-width</li>
+ <li>data-focus-color</li>
+ </ul>
+ Example: <br>
+
+ This data attr add new style in HEAD tag.
+ By default in correctMoney.css this class is: 
+  
+  .correctMoney {<br>
+    border: none;<br>
+    border-bottom: 2px solid #cecece;<br>
+    position: relative;<br>
+    -webkit-transition: all 1s ease-in-out;<br>
+    -moz-transition: all 1s ease-in-out;<br>
+    -ms-transition: all 1s ease-in-out;<br>
+    -o-transition: all 1s ease-in-out;<br>
+    outline: none;<br>
+}<br>
+
+.correctMoney:focus {<br>
+    border-bottom: 2px solid #ce231f; <br>
+}<br>
+   
+</p>
