@@ -1,0 +1,14 @@
+.correctMoney {
+    border: none;
+    border-bottom: 2px solid #cecece;
+    position: relative;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    outline: none;
+}
+
+.correctMoney:focus {
+    border-bottom: 2px solid #ce231f;
+}

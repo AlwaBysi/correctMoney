@@ -1,3 +1,32 @@
+$(document).ready(function(color, width){
+   let $el = $('#correctMoney'),
+       elHead = $("head"),
+       correctMoneyCss,
+       borderColor = $el.data('borderColor'),
+       inputWidth = $el.data('inputWidth'),
+       focusColor = $el.data('focusColor');
+
+    elHead.append("<link>");
+    correctMoneyCss = elHead.children(":last");
+
+    correctMoneyCss.attr({
+        rel:  'stylesheet',
+        href: 'correctMoney/correctMoney.css'
+    });
+
+    elHead.append('<style></style>');
+    var new_stylesheet = elHead.children(':last');
+
+    new_stylesheet.html('#correctMoney {' +
+        (borderColor ? 'border-bottom: 2px solid '+ borderColor +';' : '') +
+        (inputWidth ? 'width: '+ inputWidth +';' : '') +
+        '}');
+
+    focusColor ? new_stylesheet.append('#correctMoney:focus {' +
+        'border-bottom: 2px solid '+ focusColor +';'+
+        '}') : '';
+});
+
 function correctmoney (e, params) {
     let value,
         position,
