@@ -26,7 +26,7 @@
  </ul>
  Example: <br>
  
- data-border-color="#000" data-input-width="250px" data-focus-color="red"
+ data-border-color="#000" data-input-width="250px" data-focus-color="red" <br>
 
 
  This data attr add new style in HEAD tag.
